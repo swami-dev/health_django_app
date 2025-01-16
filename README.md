@@ -11,15 +11,18 @@ This project is a Django-based web application for managing user registration, a
 
 ## Requirements
 
-- Python 3.8+
-- Django 4.2+
-- Bootstrap (for front-end design)
+asgiref==3.8.1
+Django==5.1.5
+djangorestframework==3.15.2
+pillow==11.1.0
+sqlparse==0.5.3
+Bootstrap (for front-end design)
 
 ## Installation
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-repository/healthcare_project.git
+git clone https://github.com/swami-dev/healthcare_project.git
 cd healthcare_project
 ```
 
