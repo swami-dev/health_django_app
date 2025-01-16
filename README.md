@@ -11,12 +11,12 @@ This project is a Django-based web application for managing user registration, a
 
 ## Requirements
 
-asgiref==3.8.1
-Django==5.1.5
-djangorestframework==3.15.2
-pillow==11.1.0
-sqlparse==0.5.3
-Bootstrap (for front-end design)
+- asgiref==3.8.1
+- Django==5.1.5
+- djangorestframework==3.15.2
+- pillow==11.1.0
+- sqlparse==0.5.3
+- Bootstrap (for front-end design)
 
 ## Installation
 
