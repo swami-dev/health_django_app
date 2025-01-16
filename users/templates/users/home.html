@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .dashboard-header {
+            color: #007bff;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .card {
+            margin: 20px 0;
+        }
+        .card-header {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Health Dashboard</a>
+        <div class="ml-auto d-flex align-items-center">
+            <!-- Display Profile Picture -->
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-pic">
+            {% else %}
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-pic">
+            {% endif %}
+            <!-- Logout Button -->
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Dashboard Header -->
+        <h1 class="dashboard-header">Welcome, {{ user.username }}!</h1>
+
+        <div class="row">
+            <!-- User Profile -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Profile Information</div>
+                    <div class="card-body">
+                        <p><strong>Username:</strong> {{ user.username }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        <p><strong>Phone:</strong> {{ user.phone_number|default:"Not provided" }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Statistics -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Health Overview</div>
+                    <div class="card-body">
+                        <p><strong>Steps Today:</strong> 5,400</p>
+                        <p><strong>Calories Burned:</strong> 320 kcal</p>
+                        <p><strong>Water Intake:</strong> 2.5 liters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Recent Activities -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Recent Activities</div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Morning Walk - 30 minutes</li>
+                            <li>Yoga Session - 45 minutes</li>
+                            <li>Healthy Meal Prep</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Appointments -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Upcoming Appointments</div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Dr. Smith - 20th Jan, 10:00 AM</li>
+                            <li>Therapist - 22nd Jan, 3:00 PM</li>
+                            <li>Nutritionist - 25th Jan, 11:00 AM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
